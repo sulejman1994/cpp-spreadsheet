@@ -27,7 +27,7 @@ public:
     static void ValidatePosition(Position pos);
 
 private:
-	mutable std::unordered_map<Position, Cell, Position::Hasher> table_;
+    std::unordered_map<Position, Cell, Position::Hasher> table_;
     DependencyGraph graph_;
     mutable Size size_ = {0, 0}; 
     
