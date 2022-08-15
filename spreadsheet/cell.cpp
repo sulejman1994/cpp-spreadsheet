@@ -36,7 +36,7 @@ bool DependencyGraph::IsCycle(Position pos) const {
 }
 
 void DependencyGraph::DfsForCycle(Position pos, std::unordered_map<Position, int, Position::Hasher>& colors, bool& is_cycle) const {
-    if (!cell_to_referenced_cells_.count(pos)) {
+    if (cell_to_referenced_cells_.count(pos) == 0) {
         colors[pos] = 2;
         return;
     }
@@ -74,7 +74,7 @@ void DependencyGraph::InvalidateCash(Position pos) {
 
 void DependencyGraph::DfsForCashInvalidation(Position pos, std::unordered_set<Position, Position::Hasher>& visited) {
     visited.insert(pos);
-    if (!cell_to_depent_cells_.count(pos)) {
+    if (cell_to_depent_cells_.count(pos) == 0) {
         return;
     }
     for (const auto& cell : cell_to_depent_cells_.at(pos)) {
